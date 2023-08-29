@@ -1,5 +1,3 @@
-import codecs
-
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -12,8 +10,8 @@ st.title('DSA05 - Análisis de deserción de empleados')
 
 
 @st.cache
-def filter_data_by_(column, value):
-    if type(value) == np.int64 :
+def filter_data_by_(column, value)-> pd.DataFrame:
+    if type(value).isinstance(np.int64) :
         filtered_data = data[data[column]==value]
         return filtered_data
 
@@ -22,7 +20,7 @@ def filter_data_by_(column, value):
 
 
 @st.cache
-def load_data(nrows):
+def load_data(nrows: int) -> pd.DataFrame:
     data = pd.read_csv('Employees.csv', nrows=nrows)
     def lowercase(x): return str(x).lower()
     return data
