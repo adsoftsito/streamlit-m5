@@ -10,8 +10,9 @@ st.title('DSA05 - Análisis de deserción de empleados')
 
 
 @st.cache
-def filter_data_by_(column, value)-> pd.DataFrame:
-    if type(value).isinstance(np.int64) :
+def filter_data_by_(column: str, value:any)-> pd.DataFrame:
+    """Function to filter data."""
+    if isinstance(value,np.int64) :
         filtered_data = data[data[column]==value]
         return filtered_data
 
@@ -21,9 +22,9 @@ def filter_data_by_(column, value)-> pd.DataFrame:
 
 @st.cache
 def load_data(nrows: int) -> pd.DataFrame:
-    data = pd.read_csv('Employees.csv', nrows=nrows)
-    def lowercase(x): return str(x).lower()
-    return data
+    """Function to load data."""
+    employees = pd.read_csv('Employees.csv', nrows=nrows)
+    return employees
 
 
 data_load_state = st.text('Loading Employees data...')
@@ -34,7 +35,7 @@ if st.sidebar.checkbox('Show all employees'):
     st.subheader('All Employees')
     st.write(data)
 
-st.sidebar.divider()
+st.markdown("___")
 
 employee_ID = st.sidebar.text_input('Search for Employee ID:')
 btnEmployeeID = st.sidebar.button('Search ID')
@@ -66,7 +67,7 @@ if (btnUnit):
     st.write(f"Total Employees: {count_row}")
     st.write(data_by_unit)
 
-st.sidebar.divider()
+st.markdown("___")
 
 selected_edulvl = st.sidebar.selectbox(
     "Select Educational Level", data['Education_Level'].unique())
@@ -78,7 +79,7 @@ if selected_edulvl:
     st.write(f"Total Employees : {count_row}")
     st.write(data_by_edu_level)
 
-st.sidebar.divider()
+st.markdown("___")
 
 
 selected_hometown = st.sidebar.selectbox(
@@ -91,7 +92,7 @@ if selected_hometown:
     st.write(f"Total Employees: {count_row}")
     st.write(data_by_hometown)
 
-st.sidebar.divider()
+st.markdown("___")
 
 selected_unit = st.sidebar.selectbox(
     "Select Unit", data['Unit'].unique())
@@ -103,7 +104,7 @@ if selected_unit:
     st.write(f"Total Employees: {count_row}")
     st.write(data_by_unit)
 
-st.sidebar.divider()
+st.markdown("___")
 
 sns.set_theme(style="whitegrid", palette="husl")
 sns.axes_style("whitegrid")
