@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 st.title('DSA05 - Análisis de deserción de empleados')
 
 
-@st.cache_data
+@st.cache
 def filter_data_by_(column, value):
     if type(value) == np.int64 :
         filtered_data = data[data[column]==value]
@@ -21,7 +21,7 @@ def filter_data_by_(column, value):
     return filtered_data
 
 
-@st.cache_data
+@st.cache
 def load_data(nrows):
     data = pd.read_csv('Employees.csv', nrows=nrows)
     def lowercase(x): return str(x).lower()
