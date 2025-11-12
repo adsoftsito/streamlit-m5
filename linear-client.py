@@ -1,6 +1,7 @@
 import streamlit as st
 import requests
 import numpy as np
+import tensorflow as tf
 
 url = 'https://tensorflow-linear-model-fvap.onrender.com/v1/models/linear-model:predict'
 
@@ -30,4 +31,11 @@ if (btnPredict):
    prediction = predict()
    st.write(prediction)
    st.write(prediction.text)
+
+
+hello = tf.constant("hello  tensorflow world")
+print(hello)
+
+# to acces a Tensor value, call numpy()
+st.write(hello.numpy())
 
