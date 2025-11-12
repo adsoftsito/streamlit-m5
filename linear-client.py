@@ -20,7 +20,7 @@ def predict():
 
 
 st.title('Linear model client')
-st.write('y = Wx + b')
+st.write('y = 2.0x + 1')
 
 
 data = st.text_input('0, 1, 2')
