@@ -18,6 +18,11 @@ def predict():
   print(response.text)
   return response
 
+
+st.title('Linear model client')
+st.write('y = Wx + b')
+
+
 data = st.text_input('0, 1, 2')
 btnPredict = st.button('Predict')
 
