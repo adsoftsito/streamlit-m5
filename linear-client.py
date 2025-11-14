@@ -4,6 +4,7 @@ import numpy as np
 import tensorflow as tf
 
 url = 'https://tensorflow-linear-model-fvap.onrender.com/v1/models/linear-model:predict'
+calUrl = 'https://calculator-api-w09s.onrender.com/calc'
 
 def predict():
   x = np.array([
@@ -20,6 +21,15 @@ def predict():
   return response
 
 
+def calc():
+  
+  
+  data = {'statement': "2*3"}
+  response = requests.post(calUrl, json=data)
+  
+  print(response.text)
+  return response
+
 st.title('Linear model client')
 st.write('y = 2.0x + 1')
 
@@ -33,9 +43,18 @@ if (btnPredict):
    st.write(prediction.text)
 
 
-hello = tf.constant("hello  tensorflow world")
-print(hello)
+dataCalc = st.text_input('2*3')
+btnCalc = st.button('calc')
+
+if (btnCalc):
+   result = calc()
+   st.write(result)
+   st.write(result.text)
+
+
+#hello = tf.constant("hello  tensorflow world")
+#print(hello)
 
 # to acces a Tensor value, call numpy()
-st.write(hello.numpy())
+#st.write(hello.numpy())
 
